@@ -1,3 +1,5 @@
+import {escape} from 'html-escaper';
+
 /*! (c) Andrea Giammarchi & Nicolò Ribaudo - ISC */
 export default ({types: t}) => ({
   visitor: {
@@ -12,6 +14,9 @@ export default ({types: t}) => ({
         return;
 
       path.set('name', t.jsxNamespacedName(t.jsxIdentifier(''), name));
+
+      if (t.isStringLiteral(value))
+        value.value = escape(value.value);
     }
   }
 });

@@ -42,5 +42,8 @@
     "url": "https://github.com/ungap/plugin-transform-static-jsx/issues"
   },
   "homepage": "https://github.com/ungap/plugin-transform-static-jsx#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "html-escaper": "^3.0.3"
+  }
 }

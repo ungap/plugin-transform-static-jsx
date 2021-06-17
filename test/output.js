@@ -6,14 +6,14 @@ function Component({
     className: className
   }, /*#__PURE__*/React.createElement("p", {
     color: color,
-    ":label": "foo",
+    ":label": "f&quot;o",
     hidden: true
   })), /*#__PURE__*/React.createElement("div", {
     ":id": "my-div",
     className: className
   }, /*#__PURE__*/React.createElement("p", {
     color: color,
-    ":label": "foo",
+    ":label": "f&amp;o",
     ":data-attr": "2"
   })));
 }
