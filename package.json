@@ -1,6 +1,6 @@
 {
   "name": "@ungap/plugin-transform-static-jsx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "./cjs/index.js",
   "scripts": {
