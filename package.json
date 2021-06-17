@@ -1,6 +1,6 @@
 {
   "name": "@ungap/plugin-transform-static-jsx",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./cjs/index.js",
   "scripts": {
@@ -8,7 +8,13 @@
     "cjs": "ascjs --no-default esm cjs",
     "test": "babel test/input.jsx -o test/output.js"
   },
-  "keywords": ["JSX", "template", "literal", "static", "parts"],
+  "keywords": [
+    "JSX",
+    "template",
+    "literal",
+    "static",
+    "parts"
+  ],
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "module": "./esm/index.js",
