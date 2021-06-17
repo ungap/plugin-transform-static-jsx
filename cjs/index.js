@@ -3,12 +3,13 @@
 module.exports = ({types: t}) => ({
   visitor: {
     JSXAttribute(path) {
-      let {name, value} = path.node;
+      const {node: {name, value}, parent} = path;
 
-      if (t.isJSXNamespacedName(name))
-        return;
-
-      if (t.isJSXExpressionContainer(value))
+      if (
+        t.isJSXNamespacedName(name) ||
+        t.isJSXExpressionContainer(value) ||
+        /^[A-Z]/.test(parent.name.name)
+      )
         return;
 
       path.set('name', t.jsxNamespacedName(t.jsxIdentifier(''), name));
