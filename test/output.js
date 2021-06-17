@@ -7,7 +7,7 @@ function Component({
   }, /*#__PURE__*/React.createElement("p", {
     color: color,
     ":label": "foo",
-    ":data-attr": "2"
+    hidden: true
   })), /*#__PURE__*/React.createElement("div", {
     ":id": "my-div",
     className: className

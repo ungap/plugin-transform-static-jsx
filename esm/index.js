@@ -8,10 +8,9 @@ export default ({types: t}) => ({
         return;
 
       if (t.isJSXExpressionContainer(value))
-        value = value.expression;
+        return;
 
-      if (t.isImmutable(value))
-        path.set('name', t.jsxNamespacedName(t.jsxIdentifier(''), name));
+      path.set('name', t.jsxNamespacedName(t.jsxIdentifier(''), name));
     }
   }
 });
