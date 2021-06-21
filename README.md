@@ -9,7 +9,7 @@ A huge thanks to [Nicolò Ribaudo](https://twitter.com/NicoloRibaudo) for helpin
 ```js
 {
   "plugins": [
-    ["@babel/plugin-transform-react-jsx", {"throwIfNamespace": false}],
+    ["@babel/plugin-transform-react-jsx"],
     ["module:@ungap/plugin-transform-static-jsx"]
   ]
 }
