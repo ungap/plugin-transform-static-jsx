@@ -1,8 +1,8 @@
-# @ungap/plugin-transform-static-jsx
+# @ungap/plugin-transform-hinted-jsx
 
-This plugin is [a follow up of this post](https://webreflection.medium.com/bringing-jsx-to-template-literals-1fdfd0901540) and it can be used together with [@babel/plugin-transform-react-jsx](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx) and through [jsx2tag](https://github.com/WebReflection/jsx2tag#readme), so that static, non component related, attributes, are parsed as static values.
+This plugin is [a follow up of this post](https://webreflection.medium.com/jsx-is-inefficient-by-default-but-d1122c992399) and it can be used together with [@babel/plugin-transform-react-jsx](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx).
 
-A huge thanks to [Nicolò Ribaudo](https://twitter.com/NicoloRibaudo) for helping out creating the basic structure to make this work.
+A huge thanks to [Nicolò Ribaudo](https://twitter.com/NicoloRibaudo) for helping out.
 
 ### babel.config.json
 
@@ -10,7 +10,7 @@ A huge thanks to [Nicolò Ribaudo](https://twitter.com/NicoloRibaudo) for helpin
 {
   "plugins": [
     ["@babel/plugin-transform-react-jsx"],
-    ["module:@ungap/plugin-transform-static-jsx"]
+    ["module:@ungap/plugin-transform-hinted-jsx"]
   ]
 }
 ```
@@ -21,32 +21,37 @@ A huge thanks to [Nicolò Ribaudo](https://twitter.com/NicoloRibaudo) for helpin
 npm i --save-dev @babel/cli
 npm i --save-dev @babel/core
 npm i --save-dev @babel/plugin-transform-react-jsx
-npm i --save-dev @ungap/plugin-transform-static-jsx
+npm i --save-dev @ungap/plugin-transform-hinted-jsx
 ```
 
 ### What is it / How to use it
 
-Once configured, and after following **[jsx2tag](https://github.com/WebReflection/jsx2tag#readme)** instructions, this module would produce a slightly different *Template Literal Tag*'s signature.
+This produces a slightly different *JSX* transform.
 
 ```js
-// using this paragraph as example
-const ref = <p class="any" data-test={dynamic}>Hello</p>;
+const div = (
+  <div>
+    <p className="static" runtime={'prop'}/>
+    {<p />}
+  </div>
+);
 
-// without @ungap/plugin-transform-static-jsx
-[
-  ['<p class="', '" data-test="', '">', '</p>'],
-  'any',
-  dynamic,
-  ['Hello']
-]
-
-
-// with @ungap/plugin-transform-static-jsx
-[
-  ['<p class="any" data-test="', '">', '</p>'],
-  dynamic,
-  ['Hello']
-]
+// becomes
+const div = React.createElement``(
+  'div',
+  null,
+  React.createElement(
+    'p',
+    {
+      className: 'static',
+      runtime: React.interpolation('prop')
+    }
+  ),
+  React.interpolation(
+    React.createElement``(
+      'p',
+      null
+    )
+  )
+);
 ```
-
-Because template literals based libraries relies on interpolations to "*diff*" their updates, this module would be a performance boost whenever performance is, actually, a concern or a real issue.

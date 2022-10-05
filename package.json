@@ -1,6 +1,6 @@
 {
-  "name": "@ungap/plugin-transform-static-jsx",
-  "version": "0.2.0",
+  "name": "@ungap/plugin-transform-hinted-jsx",
+  "version": "0.0.0",
   "main": "./cjs/index.js",
   "scripts": {
     "build": "npm run cjs && npm run test",
@@ -9,10 +9,8 @@
   },
   "keywords": [
     "JSX",
-    "template",
-    "literal",
-    "static",
-    "parts"
+    "performance",
+    "hints"
   ],
   "author": "Andrea Giammarchi",
   "license": "ISC",
@@ -26,9 +24,9 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.6",
-    "@babel/plugin-transform-react-jsx": "^7.14.5",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.3",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
     "ascjs": "^5.0.1"
   },
   "directories": {

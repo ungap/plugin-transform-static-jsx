@@ -1,12 +1,18 @@
-function Component({ className }) {
+/** @jsx test.createElement *//** @jsxFrag test.Fragment *//** @jsxInterpolation test.Interpolation */
+
+function Component({ className, props }) {
   return (
     <>
       <div id="my-div" className={className}>
-        <p color={color} label="f&quot;o" hidden={true} />
+        <>
+          <span />
+          OK
+        </>
+        <p color={color} label="f&quot;o" hidden={Math.random() < .5} />
       </div>
-      <div id="my-div" className={className}>
-        <p color={color} label="f&amp;o" data-attr="2" />
-      </div>
+      <Component id="my-component" className={className} {...props}>
+        {[<p a="a" b={Math.random() < .5} />]}
+      </Component>
     </>
   );
 }
